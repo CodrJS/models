@@ -1,0 +1,1 @@
+export type TaskType = "classification" | "tagging" | "code-tagging" | "translation";
