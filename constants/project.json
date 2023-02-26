@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/CodrJS/WebUI/main/public/schema/project.schema.json",
+  "_id": 1,
+  "team": { "name": "PriGen" },
+  "general": {
+    "title": "Demo Project",
+    "type": "classification",
+    "slug": "demo-project",
+    "bgColorClass": "bg-pink-600",
+    "guidelines": ":smile:",
+    "anonymize": false,
+    "private": false
+  },
+  "display": {
+    "inputs": [
+      {
+        "type": "text",
+        "value": "$sample.hops.[*]",
+        "format": "```java\\n$value\\n```",
+        "collapsible": true,
+        "header": "Hop $index"
+      },
+      {
+        "type": "text",
+        "value": "$sample",
+        "format": "**Practice:** $value.practice\\n\\n**Purpose:** $value.purpose"
+      },
+      {
+        "type": "text",
+        "value": "$sample",
+        "format": "### Metadata\\n**App name:** $value.app_name\\n\\n**Information Accessed:** $value.information_accessed"
+      },
+      {
+        "type": "text",
+        "value": "$sample.apis.[*]",
+        "format": "**API Called:** `$value.[0]`\\n\\n**API description:** $value.[1]"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "radio",
+        "prompt": "Which of the following privacy captions describe __how__ and __why__ personal information is used in the code snippet above?",
+        "options": "$sample.options.[*]"
+      }
+    ]
+  },
+  "sample": {
+    "model": {
+      "type": "object",
+      "properties": {
+        "sample_id": { "type": "string" },
+        "app_name": { "type": "string" },
+        "class_name": { "type": "string" },
+        "method_name": { "type": "string" },
+        "information_accessed": { "type": "string" },
+        "apis": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "hops": { "type": "array", "items": { "type": "string" } },
+        "options": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["sample_id", "apis", "hops", "options"]
+    }
+  },
+  "updatedAt": "March 17, 2020",
+  "createdAt": "March 17, 2020"
+}

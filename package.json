@@ -1,20 +1,20 @@
 {
-  "name": "@codrjs/template",
+  "name": "@codrjs/models",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "repository": "git@github.com:CodrJS/ts-npm-template.git",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "types": "./types/index.d.ts",
+  "repository": "git@github.com:CodrJS/models.git",
   "author": "Dylan Bulmer <dylan@dylanbulmer.com>",
   "license": "MIT",
   "type": "module",
   "private": false,
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./cjs/index.js",
+      "import": "./esm/index.js",
+      "types": "./types/index.d.ts"
     }
   },
   "scripts": {

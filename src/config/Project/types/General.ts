@@ -1,4 +1,4 @@
-import { TaskType } from "../../types";
+import { TaskType } from "../../../types";
 
 export interface GeneralConfig {
   title: string;
