@@ -1,10 +1,10 @@
-import { ProjectConfig } from "../config";
+import { Config } from "..";
 import { ProjectConfiguration } from "../config/Project";
-import options from "../../constants/project.json";
+import options from "../constants/project.json";
 
 describe("Project Configuration", () => {
   it("does not throw an error", () => {
-    const config = new ProjectConfig({
+    const config = new Config.Project({
       verison: "v2",
       config: options as ProjectConfiguration,
     }).config;
