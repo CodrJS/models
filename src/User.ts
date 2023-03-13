@@ -1,16 +1,9 @@
-import { Base, IBase } from "../Base";
-import { UserRoleType } from "../types";
+import { Base, IBase } from "./Base";
+import { UserRoleType } from "./types";
 
 export interface IUser extends IBase {
-  name?: {
-    first: string;
-    last: string;
-    preferred?: string;
-  };
-  type: "anonymous" | "member";
+  type: "anonymous" | "member" | "external";
   email: string;
-  accessToken?: string;
-  refreshToken?: string;
   role: UserRoleType;
   flags: {
     isDisabled: boolean;
@@ -18,16 +11,9 @@ export interface IUser extends IBase {
   };
 }
 
-export default class User extends Base {
-  name?: {
-    first: string;
-    last: string;
-    preferred?: string;
-  };
-  type: "anonymous" | "member";
+export class User extends Base {
+  type: "anonymous" | "member" | "external";
   email: string;
-  accessToken?: string;
-  refreshToken?: string;
   role: UserRoleType;
   flags: {
     isDisabled: boolean;

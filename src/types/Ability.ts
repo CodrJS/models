@@ -6,12 +6,12 @@ import {
   MongoQuery,
   PureAbility,
 } from "@casl/ability";
-import { IUser } from "../user";
+import { IUser } from "../User";
 import { UserRoleType } from "./UserRole";
 import type { Document as MongoDocument } from "mongoose";
 
 // setup action and subject types for ability
-export type ACTION = "read" | "create" | "update" | "delete" | "manage";
+export type ACTION = "create" | "delete" | "read" | "update" | "manage" | "edit";
 // export type SUBJECT =
 //   | "User"
 //   | UserDocument
@@ -68,5 +68,5 @@ export const DefineAbility = function DefineAbility<
 
 // use this resolver in all abilities to define
 const resolveAction = createAliasResolver({
-  // manage: ["update", "delete", "read", "create"],
+  edit: ["update", "read", "create"],
 });

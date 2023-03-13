@@ -1,12 +1,12 @@
 import { Config } from "..";
-import { ProjectConfiguration } from "../config/Project";
+import { IProjectConfig } from "../config/Project";
 import options from "../constants/project.json";
 
 describe("Project Configuration", () => {
   it("does not throw an error", () => {
     const config = new Config.Project({
       verison: "v2",
-      config: options as ProjectConfiguration,
+      config: options as IProjectConfig,
     }).config;
 
     expect(config.general.bgColorClass).toBe("bg-pink-600");
