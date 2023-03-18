@@ -9,20 +9,20 @@ export interface IProfile {
   };
   avatarUrl?: string;
   username: string;
-  user: ObjectId;
+  userId: ObjectId;
 }
 
 export class Profile extends Base {
   name: IProfile["name"];
   avatarUrl: IProfile["avatarUrl"];
-  user: IProfile["user"];
+  user: IProfile["userId"];
   username: IProfile["username"];
 
-  constructor({ name, avatarUrl, username, user, ...base }: IProfile) {
+  constructor({ name, avatarUrl, username, userId, ...base }: IProfile) {
     super(base);
     this.name = name;
     this.avatarUrl = avatarUrl;
-    this.user = user;
+    this.user = userId;
     this.username = username;
   }
 
