@@ -1,3 +1,4 @@
-export { TaskType } from "./Task";
+export * from "./Task";
 export * from "./Ability";
 export * from "./UserRole";
+export * from "./Flags";

@@ -6,8 +6,9 @@ export interface IUser extends IBase {
   email: string;
   role: UserRoleType;
   flags: {
-    isDisabled: boolean;
     isAnonymous: boolean;
+    isDeleted: boolean;
+    isDisabled: boolean;
   };
 }
 
@@ -16,15 +17,16 @@ export class User extends Base {
   email: string;
   role: UserRoleType;
   flags: {
-    isDisabled: boolean;
     isAnonymous: boolean;
+    isDeleted: boolean;
+    isDisabled: boolean;
   };
 
   constructor({
     type,
     email,
     role,
-    flags = { isDisabled: false, isAnonymous: false },
+    flags = { isDisabled: false, isAnonymous: false, isDeleted: false },
     ...base
   }: IUser) {
     super(base);
