@@ -1,7 +1,7 @@
 // import { AccessibleModel } from "@casl/mongoose";
 // import { Document } from "mongoose";
 // import { Ability, ACTION } from "../types";
-import { IUser } from "../User";
+import { IUser } from "../";
 import { Response } from "./Response";
 
 export abstract class Utility {

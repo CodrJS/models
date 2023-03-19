@@ -1,15 +1,13 @@
+import type { AbilityClass, ForcedSubject, MongoQuery } from "@casl/ability";
 import {
   AbilityBuilder,
-  AbilityClass,
   buildMongoQueryMatcher,
   createAliasResolver,
-  ForcedSubject,
-  MongoQuery,
   PureAbility,
 } from "@casl/ability";
 import type { AccessibleFieldsModel } from "@casl/mongoose";
-import { IUser } from "../User";
-import { UserRoleType } from "./UserRole";
+import type { IUser } from "../";
+import type { UserRoleType } from "./UserRole";
 
 // setup action and subject types for ability
 export type ACTION =
@@ -17,8 +15,9 @@ export type ACTION =
   | "delete"
   | "read"
   | "update"
-  | "manage"
-  | "edit";
+  | "manage"      // all CRUD ops
+  | "edit"        // all CRUD ops except delete
+  | "manipulate"; // all CRUD ops except read
 
 export type ABILITIES<SUBJECT> = [
   ACTION,
@@ -69,5 +68,6 @@ export const DefineAbility = function DefineAbility<
 
 // use this resolver in all abilities to define
 const resolveAction = createAliasResolver({
-  edit: ["update", "read", "create"],
+  edit: ["create", "read", "update"],
+  manipulate: ["create", "update", "delete"],
 });

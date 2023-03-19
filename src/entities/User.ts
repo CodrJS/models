@@ -1,5 +1,5 @@
 import { Base, IBase } from "./Base";
-import { UserRoleType } from "./types";
+import { UserRoleType } from "../types";
 
 export interface IUser extends IBase {
   type: "anonymous" | "member" | "external";

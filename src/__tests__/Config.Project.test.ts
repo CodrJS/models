@@ -1,5 +1,5 @@
 import { Config } from "..";
-import { IProjectConfig } from "../config/Project";
+import { IProjectConfig } from "../entities/config/Project";
 import options from "../constants/project.json";
 
 describe("Project Configuration", () => {
