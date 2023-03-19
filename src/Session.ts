@@ -1,4 +1,4 @@
-import type { ObjectId } from "mongoose";
+import type { Types } from "mongoose";
 import { Base } from "./Base";
 import UUID from "uuid";
 
@@ -22,7 +22,7 @@ export interface ISession {
   os: string;
   browser: string;
   ipAddress: string;
-  userId: ObjectId;
+  userId: Types.ObjectId;
 }
 
 export class Session extends Base {
@@ -32,7 +32,7 @@ export class Session extends Base {
   os: string;
   browser: string;
   ipAddress: string;
-  userId: ObjectId;
+  userId: Types.ObjectId;
 
   constructor({
     status = "INITIATING",

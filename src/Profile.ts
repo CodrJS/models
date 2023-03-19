@@ -1,4 +1,4 @@
-import type { ObjectId } from "mongoose";
+import type { Types } from "mongoose";
 import { Base } from "./Base";
 
 export interface IProfile {
@@ -9,7 +9,7 @@ export interface IProfile {
   };
   avatarUrl?: string;
   username: string;
-  userId: ObjectId;
+  userId: Types.ObjectId;
 }
 
 export class Profile extends Base {

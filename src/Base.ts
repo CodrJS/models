@@ -1,8 +1,8 @@
-import type { ObjectId } from "mongoose";
+import type { Types } from "mongoose";
 
 export interface IBase {
   __v?: number;
-  _id?: ObjectId;
+  _id?: Types.ObjectId;
   createdAt?: string;
   updatedAt?: string;
 }

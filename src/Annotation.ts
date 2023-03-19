@@ -1,15 +1,15 @@
-import { ObjectId } from "mongoose";
+import type { Types } from "mongoose";
 import { Base, IBase } from "./Base";
 
 export interface IAnnotation extends IBase {
-  datasetId: ObjectId;
-  sampleId: ObjectId;
+  datasetId: Types.ObjectId;
+  sampleId: Types.ObjectId;
   value: any;
 }
 
 export class Annotation extends Base {
-  datasetId: ObjectId;
-  sampleId: ObjectId;
+  datasetId: Types.ObjectId;
+  sampleId: Types.ObjectId;
   value: any;
 
   constructor({ datasetId, sampleId, value, ...base }: IAnnotation) {

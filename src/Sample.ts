@@ -1,13 +1,13 @@
-import { ObjectId } from "mongoose";
+import type { Types } from "mongoose";
 import { Base, IBase } from "./Base";
 
 export interface ISample extends IBase {
-  datasetId: ObjectId;
+  datasetId: Types.ObjectId;
   payload: object;
 }
 
 export class Sample extends Base {
-  datasetId: ObjectId;
+  datasetId: Types.ObjectId;
   payload: object;
 
   constructor({ datasetId, payload, ...base }: ISample) {

@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import type { Types } from "mongoose";
 import { Group, IGroup } from "./Group";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -6,14 +6,14 @@ export interface IDataset extends IGroup {
   flags?: {
     isPrivate?: boolean;
   };
-  projectId: ObjectId;
+  projectId: Types.ObjectId;
 }
 
 export class Dataset extends Group {
   flags?: {
     isPrivate?: boolean;
   };
-  projectId: ObjectId;
+  projectId: Types.ObjectId;
 
   constructor({ flags = { isPrivate: false }, projectId, ...base }: IDataset) {
     super(base);

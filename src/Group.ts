@@ -1,18 +1,18 @@
-import { ObjectId } from "mongoose";
+import type { Types } from "mongoose";
 import { Base, IBase } from "./Base";
 
 export interface IGroup extends IBase {
-  creatorId: ObjectId;
-  members: ObjectId[];
+  creatorId: Types.ObjectId;
+  members: Types.ObjectId[];
   name: string;
 }
 
 export class Group extends Base {
-  creatorId: ObjectId;
+  creatorId: Types.ObjectId;
   /**
    * @type {ObjectId[]} of either UserId or UserGroupId
    */
-  members: ObjectId[];
+  members: Types.ObjectId[];
   name: string;
 
   constructor({ creatorId, name, members, ...base }: IGroup) {

@@ -1,5 +1,4 @@
 export * as types from "./types";
-export * as models from "./model";
 export * as Config from "./config";
 export * from "./Audit";
 export * from "./Dataset";

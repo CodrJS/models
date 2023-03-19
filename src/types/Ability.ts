@@ -1,27 +1,25 @@
 import {
   AbilityBuilder,
   AbilityClass,
+  buildMongoQueryMatcher,
   createAliasResolver,
   ForcedSubject,
   MongoQuery,
   PureAbility,
 } from "@casl/ability";
+import type { AccessibleFieldsModel } from "@casl/mongoose";
 import { IUser } from "../User";
 import { UserRoleType } from "./UserRole";
-import type { Document as MongoDocument } from "mongoose";
 
 // setup action and subject types for ability
-export type ACTION = "create" | "delete" | "read" | "update" | "manage" | "edit";
-// export type SUBJECT =
-//   | "User"
-//   | UserDocument
-//   | "Profile"
-//   | ProfileDocument
-//   | "UserGroup"
-//   | UserGroupDocument
-//   | "Project"
-//   | ProjectDocument
-//   | "all";
+export type ACTION =
+  | "create"
+  | "delete"
+  | "read"
+  | "update"
+  | "manage"
+  | "edit";
+
 export type ABILITIES<SUBJECT> = [
   ACTION,
   SUBJECT | ForcedSubject<Exclude<SUBJECT, "all">>,
@@ -29,23 +27,23 @@ export type ABILITIES<SUBJECT> = [
 
 // define what an ability is using the action and subject types
 export type Ability<
-  Document extends MongoDocument,
+  Document extends AccessibleFieldsModel<any>,
   Subject extends string,
 > = PureAbility<ABILITIES<Document | Subject>, MongoQuery<Document>>;
 
 // define permissions; used to create an ability
 export type DefinePermissions<
-  Document extends MongoDocument,
+  Document extends AccessibleFieldsModel<any>,
   Subject extends string,
 > = (user: IUser, builder: AbilityBuilder<Ability<Document, Subject>>) => void;
 export type Permissions<
-  Document extends MongoDocument,
+  Document extends AccessibleFieldsModel<any>,
   Subject extends string,
 > = Record<UserRoleType, DefinePermissions<Document, Subject>>;
 
 // export a function for defining an ability using generics.
 export const DefineAbility = function DefineAbility<
-  Document extends MongoDocument,
+  Document extends AccessibleFieldsModel<any>,
   Subject extends string,
 >(
   user: IUser,
@@ -63,7 +61,10 @@ export const DefineAbility = function DefineAbility<
     );
   }
 
-  return builder.build({ resolveAction });
+  return builder.build({
+    resolveAction,
+    conditionsMatcher: buildMongoQueryMatcher(),
+  });
 };
 
 // use this resolver in all abilities to define
