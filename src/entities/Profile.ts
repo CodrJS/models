@@ -1,7 +1,7 @@
 import type { Types } from "mongoose";
-import { Base } from "./Base";
+import { Base, IBase } from "./Base";
 
-export interface IProfile {
+export interface IProfile extends IBase {
   name: {
     first: string;
     last: string;
@@ -13,16 +13,20 @@ export interface IProfile {
 }
 
 export class Profile extends Base {
-  name: IProfile["name"];
-  avatarUrl: IProfile["avatarUrl"];
-  user: IProfile["userId"];
-  username: IProfile["username"];
+  name: {
+    first: string;
+    last: string;
+    preferred?: string;
+  };
+  avatarUrl?: string;
+  username: string;
+  userId: Types.ObjectId;
 
   constructor({ name, avatarUrl, username, userId, ...base }: IProfile) {
     super(base);
     this.name = name;
     this.avatarUrl = avatarUrl;
-    this.user = userId;
+    this.userId = userId;
     this.username = username;
   }
 
@@ -31,7 +35,7 @@ export class Profile extends Base {
     return {
       name: this.name,
       avatarUrl: this.avatarUrl,
-      user: this.user,
+      userId: this.userId,
       username: this.username,
       ...json,
     };

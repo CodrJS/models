@@ -1,5 +1,5 @@
 import type { Types } from "mongoose";
-import { Base } from "./Base";
+import { Base, IBase } from "./Base";
 import UUID from "uuid";
 
 /**
@@ -15,7 +15,7 @@ import UUID from "uuid";
  * - not storing session for anonymous users
  */
 
-export interface ISession {
+export interface ISession extends IBase {
   status: "INITIATING" | "ESTABLISHED" | "CLOSED";
   accessToken: string;
   refreshToken: string;
