@@ -1,9 +1,10 @@
 export * from "./Audit";
-export * as Config from "./config";
+export * as Config from "./Config";
 export * from "./Dataset";
 export * from "./Group";
-export * from "./User";
+export * from "./Message";
 export * from "./Profile";
 export * from "./Session";
+export * from "./Template";
 export * from "./User";
 export * from "./UserGroup";

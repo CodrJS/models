@@ -7,6 +7,7 @@ export interface IProfile extends IBase {
     last: string;
     preferred?: string;
   };
+  phone?: string;
   avatarUrl?: string;
   username: string;
   userId: Types.ObjectId;
@@ -18,15 +19,17 @@ export class Profile extends Base {
     last: string;
     preferred?: string;
   };
+  phone?: string;
   avatarUrl?: string;
   username: string;
   userId: Types.ObjectId;
 
-  constructor({ name, avatarUrl, username, userId, ...base }: IProfile) {
+  constructor({ name, avatarUrl, username, userId, phone, ...base }: IProfile) {
     super(base);
     this.name = name;
     this.avatarUrl = avatarUrl;
     this.userId = userId;
+    this.phone = phone;
     this.username = username;
   }
 
@@ -36,6 +39,7 @@ export class Profile extends Base {
       name: this.name,
       avatarUrl: this.avatarUrl,
       userId: this.userId,
+      phone: this.phone,
       username: this.username,
       ...json,
     };

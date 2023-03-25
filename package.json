@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@casl/ability": "^6.3.3",
+    "@codrjs/config": "^1.0.1",
     "uuid": "^9.0.0"
   }
 }

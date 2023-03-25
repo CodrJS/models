@@ -1,0 +1,1 @@
+export type MESSAGE = "email" | "sms" | "push"

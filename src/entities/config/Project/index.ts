@@ -1,12 +1,10 @@
 import BaseConfig, { IBaseConfig } from "../BaseConfig";
 import { DisplayConfig } from "./types/Display";
-import { GeneralConfig } from "./types/General";
 import { SampleConfig } from "./types/Sample";
 
 export interface IProjectConfig {
   // $schema: string;
   display: DisplayConfig;
-  general: GeneralConfig;
   sample: SampleConfig;
 }
 
