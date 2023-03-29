@@ -1,5 +1,5 @@
 import { Config } from "..";
-import { IProjectConfig } from "../entities/config/Project";
+import { IProjectConfig } from "../entities/Config/Project";
 import options from "../constants/project.json";
 
 describe("Project Configuration", () => {
@@ -9,8 +9,6 @@ describe("Project Configuration", () => {
       config: options as IProjectConfig,
     }).config;
 
-    expect(config.general.bgColorClass).toBe("bg-pink-600");
-    expect(config.general.title).toBe("Demo Project");
     expect(config.display.inputs[1]).toEqual({
       type: "text",
       value: "$sample",

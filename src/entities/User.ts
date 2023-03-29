@@ -27,9 +27,12 @@ export class User extends Base {
     email,
     role,
     flags = { isDisabled: false, isAnonymous: false, isDeleted: false },
-    ...base
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
   }: IUser) {
-    super(base);
+    super({ _id, __v, createdAt, updatedAt });
     this.type = type;
     this.email = email;
     this.flags = flags;
