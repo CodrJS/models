@@ -14,16 +14,23 @@ export interface IUserGroup extends IGroup {
 
 export class UserGroup extends Group {
   flags?: {
-  isAnonymous?: boolean;
+    isAnonymous?: boolean;
     isPrivate?: boolean;
     isJoinable?: boolean;
   };
-  
+
   constructor({
     flags = { isAnonymous: false, isPrivate: false, isJoinable: false },
-    ...base
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
+    creatorId,
+    name,
+    members,
+    teams,
   }: IUserGroup) {
-    super(base);
+    super({ _id, __v, createdAt, updatedAt, creatorId, name, members, teams });
     this.flags = flags;
   }
 

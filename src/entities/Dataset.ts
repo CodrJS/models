@@ -15,8 +15,19 @@ export class Dataset extends Group {
   };
   projectId: Types.ObjectId;
 
-  constructor({ flags = { isPrivate: false }, projectId, ...base }: IDataset) {
-    super(base);
+  constructor({
+    flags = { isPrivate: false },
+    projectId,
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
+    creatorId,
+    name,
+    members,
+    teams,
+  }: IDataset) {
+    super({ _id, __v, createdAt, updatedAt, creatorId, name, members, teams });
     this.flags = flags;
     this.projectId = projectId;
   }

@@ -42,9 +42,12 @@ export class Session extends Base {
     browser = "UNKNOWN",
     ipAddress = "UNKNOWN",
     userId,
-    ...base
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
   }: ISession) {
-    super(base);
+    super({ _id, __v, createdAt, updatedAt });
     this.status = status;
     this.accessToken = accessToken;
     this.refreshToken = refreshToken;

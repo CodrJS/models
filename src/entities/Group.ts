@@ -14,8 +14,17 @@ export class Group extends Base {
   name: string;
   teams: Types.ObjectId[];
 
-  constructor({ creatorId, name, members, teams, ...base }: IGroup) {
-    super(base);
+  constructor({
+    creatorId,
+    name,
+    members,
+    teams,
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
+  }: IGroup) {
+    super({ _id, __v, createdAt, updatedAt });
     this.name = name;
     this.members = members;
     this.creatorId = creatorId;

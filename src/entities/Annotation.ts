@@ -12,8 +12,16 @@ export class Annotation extends Base {
   sampleId: Types.ObjectId;
   value: any;
 
-  constructor({ datasetId, sampleId, value, ...base }: IAnnotation) {
-    super(base);
+  constructor({
+    datasetId,
+    sampleId,
+    value,
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
+  }: IAnnotation) {
+    super({ _id, __v, createdAt, updatedAt });
     this.datasetId = datasetId;
     this.value = value;
     this.sampleId = sampleId;

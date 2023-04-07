@@ -24,8 +24,18 @@ export class Profile extends Base {
   username: string;
   userId: Types.ObjectId;
 
-  constructor({ name, avatarUrl, username, userId, phone, ...base }: IProfile) {
-    super(base);
+  constructor({
+    name,
+    avatarUrl,
+    username,
+    userId,
+    phone,
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
+  }: IProfile) {
+    super({ _id, __v, createdAt, updatedAt });
     this.name = name;
     this.avatarUrl = avatarUrl;
     this.userId = userId;

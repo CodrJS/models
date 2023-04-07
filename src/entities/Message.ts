@@ -17,8 +17,18 @@ export class Message extends Base {
   body: string;
   to: Types.ObjectId[];
 
-  constructor({ creatorId, type, subject, body, to, ...base }: IMessage) {
-    super(base);
+  constructor({
+    creatorId,
+    type,
+    subject,
+    body,
+    to,
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
+  }: IMessage) {
+    super({ _id, __v, createdAt, updatedAt });
     this.creatorId = creatorId;
     this.body = body;
     this.subject = subject;

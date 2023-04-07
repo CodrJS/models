@@ -33,9 +33,12 @@ export class Project extends Base {
     slug,
     title,
     type,
-    ...base
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
   }: IProject) {
-    super(base);
+    super({ _id, __v, createdAt, updatedAt });
 
     this.bgColorClass = bgColorClass;
     this.config = config;
@@ -57,6 +60,6 @@ export class Project extends Base {
       slug: this.slug,
       title: this.title,
       type: this.type,
-    }
+    };
   }
 }
