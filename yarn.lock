@@ -1045,10 +1045,10 @@
   resolved "https://registry.yarnpkg.com/@casl/mongoose/-/mongoose-7.1.2.tgz#61e86839ee19df8443158f44b10cbbe5137ed1fb"
   integrity sha512-YiY5gQlr5J0jsn0ZbjtDJEhqKviPyPj0ErZ2bnOh7li+ENvFMnfp5ZeF2wN7ZVcqK9mn4MCqWH56EzafRF3i+g==
 
-"@codrjs/config@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@codrjs/config/-/config-1.0.3.tgz#84115104da66b3358c5f3e4652b95081584cab13"
-  integrity sha512-jawXAQvEOsQgXOafqqtGV5L5WIt63XR1sT84HJkvaPVK7XNVDvCP21C1Q6avYYRrVoYXYuuc8QjIXmMIAG6Spg==
+"@codrjs/config@^1.0.3-patch2":
+  version "1.0.3-patch2"
+  resolved "https://registry.yarnpkg.com/@codrjs/config/-/config-1.0.3-patch2.tgz#653f0f77dd42d0ab7130dd1b252211e0a231c7ce"
+  integrity sha512-t2zFSmvNFeJbfopOWiEFF7IaqgK3T+6ewSEG/gh6Es/UnwdvSpT1Sa05FP+c7syI65LXxDX9quibGD2GBI1E1w==
   dependencies:
     dotenv "^16.0.3"
 

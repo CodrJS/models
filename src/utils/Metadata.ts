@@ -10,7 +10,7 @@ export class Metadata {
   node: {
     env: "production" | "developement" | "testing";
     version: string;
-    modules: string[];
+    modules: Record<string, string>;
     yarnVersion: string;
   };
   git: {
