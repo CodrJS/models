@@ -1,6 +1,6 @@
 {
   "name": "@codrjs/models",
-  "version": "1.0.5-patch1",
+  "version": "1.0.6",
   "description": "",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
@@ -50,7 +50,10 @@
   },
   "dependencies": {
     "@casl/ability": "^6.3.3",
-    "@codrjs/config": "^1.0.3-patch2",
+    "@codrjs/config": "^1.0.4",
     "uuid": "^9.0.0"
+  },
+  "peerDependencies": {
+    "@codrjs/config": "^1.0.4"
   }
 }

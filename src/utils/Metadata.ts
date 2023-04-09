@@ -2,8 +2,8 @@ import config from "@codrjs/config";
 
 export class Metadata {
   env: "dev" | "qa" | "stage" | "prod";
-  version: string;
   name: string;
+  version: string;
   docker: {
     hostname: string;
   };
@@ -21,12 +21,23 @@ export class Metadata {
 
   constructor() {
     this.env = config.env;
+    this.name = config.name;
     this.version = config.version;
-    this.node = config.node;
     this.git = config.git;
+    this.node = config.node;
     this.docker = {
       hostname: config.hostname,
     };
-    this.name = config.name;
+  }
+
+  toJSON() {
+    return {
+      env: this.env,
+      name: this.name,
+      version: this.version,
+      git: this.git,
+      node: this.node,
+      docker: this.docker,
+    };
   }
 }
