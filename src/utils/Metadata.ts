@@ -14,9 +14,10 @@ export class Metadata {
     yarnVersion: string;
   };
   git: {
-    branch: string;
-    commit: string;
+    ref: string;
+    commit: { sha: string; timestamp?: string };
     repo: string;
+    workflow: { sha: string };
   };
 
   constructor() {
