@@ -50,10 +50,10 @@
   },
   "dependencies": {
     "@casl/ability": "^6.3.3",
-    "@codrjs/config": "^1.0.5",
+    "@codrjs/config": "^1.0.6",
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "@codrjs/config": "^1.0.5"
+    "@codrjs/config": "^1.0.6"
   }
 }
