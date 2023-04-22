@@ -1,44 +1,47 @@
 import { Group, IGroup } from "./Group";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IUserGroup extends IGroup {
-  flags?: {
-    // anonymize the data?
-    isAnonymous?: boolean;
-    // display to others?
-    isPrivate?: boolean;
-    // others can join?
-    isJoinable?: boolean;
-  };
+interface IAdditionalFlags {
+  // anonymize the data?
+  isAnonymous: boolean;
+  // others can join?
+  isJoinable: boolean;
 }
+export type IUserGroup = IGroup<IAdditionalFlags>;
 
 export class UserGroup extends Group {
-  flags?: {
-    isAnonymous?: boolean;
-    isPrivate?: boolean;
-    isJoinable?: boolean;
-  };
-
   constructor({
-    flags = { isAnonymous: false, isPrivate: false, isJoinable: false },
+    flags = {
+      isAnonymous: false,
+      isDeleted: false,
+      isJoinable: false,
+      isPrivate: false,
+    },
     _id,
     __v,
     createdAt,
     updatedAt,
-    creatorId,
+    createdBy,
     name,
     members,
     teams,
   }: IUserGroup) {
-    super({ _id, __v, createdAt, updatedAt, creatorId, name, members, teams });
-    this.flags = flags;
+    super({
+      _id,
+      __v,
+      createdAt,
+      updatedAt,
+      createdBy,
+      name,
+      members,
+      teams,
+      flags,
+    });
   }
 
   toJSON() {
     const json = super.toJSON();
     return {
       ...json,
-      flags: this.flags,
     };
   }
 }

@@ -3,7 +3,7 @@ import type { MESSAGE } from "../types";
 import { Base, IBase } from "./Base";
 
 export interface IMessage extends IBase {
-  creatorId: Types.ObjectId;
+  createdBy: Types.ObjectId;
   type: MESSAGE;
   subject: string;
   body: string;
@@ -11,14 +11,14 @@ export interface IMessage extends IBase {
 }
 
 export class Message extends Base {
-  creatorId: Types.ObjectId;
+  createdBy: Types.ObjectId;
   type: MESSAGE;
   subject: string;
   body: string;
   to: Types.ObjectId[];
 
   constructor({
-    creatorId,
+    createdBy,
     type,
     subject,
     body,
@@ -29,7 +29,7 @@ export class Message extends Base {
     updatedAt,
   }: IMessage) {
     super({ _id, __v, createdAt, updatedAt });
-    this.creatorId = creatorId;
+    this.createdBy = createdBy;
     this.body = body;
     this.subject = subject;
     this.to = to;
@@ -40,7 +40,7 @@ export class Message extends Base {
     const json = super.toJSON();
     return {
       ...json,
-      creatorId: this.creatorId,
+      createdBy: this.createdBy,
       body: this.body,
       subject: this.subject,
       to: this.to,

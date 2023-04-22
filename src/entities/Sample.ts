@@ -10,12 +10,8 @@ export class Sample extends Base {
   datasetId: Types.ObjectId;
   payload: object;
 
-  constructor({ datasetId, payload, 
-    _id,
-    __v,
-    createdAt,
-    updatedAt, }: ISample) {
-      super({ _id, __v, createdAt, updatedAt });
+  constructor({ datasetId, payload, _id, __v, createdAt, updatedAt }: ISample) {
+    super({ _id, __v, createdAt, updatedAt });
     this.datasetId = datasetId;
     this.payload = payload;
   }

@@ -3,27 +3,29 @@ import { Flags, TaskType } from "../types";
 import { Base, IBase } from "./Base";
 
 export interface IProject extends IBase {
-  title: string;
+  name: string;
   type: TaskType;
   slug: string;
   guidelines?: string;
   bgColorClass: string;
   config: Types.ObjectId;
   flags: Flags & {
-    anonymize: boolean;
+    isAnonymized: boolean;
   };
+  createdBy: Types.ObjectId;
 }
 
 export class Project extends Base {
-  title: string;
-  type: TaskType;
+  name: string;
   slug: string;
+  type: TaskType;
   guidelines?: string;
   bgColorClass: string;
   config: Types.ObjectId;
   flags: Flags & {
-    anonymize: boolean;
+    isAnonymized: boolean;
   };
+  createdBy: Types.ObjectId;
 
   constructor({
     bgColorClass,
@@ -31,12 +33,13 @@ export class Project extends Base {
     flags,
     guidelines,
     slug,
-    title,
+    name,
     type,
     _id,
     __v,
     createdAt,
     updatedAt,
+    createdBy,
   }: IProject) {
     super({ _id, __v, createdAt, updatedAt });
 
@@ -45,8 +48,9 @@ export class Project extends Base {
     this.flags = flags;
     this.guidelines = guidelines;
     this.slug = slug;
-    this.title = title;
+    this.name = name;
     this.type = type;
+    this.createdBy = createdBy;
   }
 
   toJSON() {
@@ -58,8 +62,9 @@ export class Project extends Base {
       flags: this.flags,
       guidelines: this.guidelines,
       slug: this.slug,
-      title: this.title,
+      name: this.name,
       type: this.type,
+      createdBy: this.createdBy,
     };
   }
 }

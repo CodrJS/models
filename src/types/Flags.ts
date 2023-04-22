@@ -1,4 +1,4 @@
 export interface Flags {
-  isDeleted?: boolean;
-  isPrivate?: boolean;
+  isDeleted: boolean;
+  isPrivate: boolean;
 }

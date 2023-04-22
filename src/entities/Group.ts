@@ -1,24 +1,28 @@
 import type { Types } from "mongoose";
 import { Base, IBase } from "./Base";
+import { Flags } from "../types/Flags";
 
-export interface IGroup extends IBase {
-  creatorId: Types.ObjectId;
+export interface IGroup<F = object> extends IBase {
+  createdBy: Types.ObjectId;
   members: Types.ObjectId[];
   name: string;
   teams: Types.ObjectId[];
+  flags: Flags & F;
 }
 
 export class Group extends Base {
-  creatorId: Types.ObjectId;
+  createdBy: Types.ObjectId;
   members: Types.ObjectId[];
   name: string;
   teams: Types.ObjectId[];
+  flags: Flags & object;
 
   constructor({
-    creatorId,
+    createdBy,
     name,
     members,
     teams,
+    flags,
     _id,
     __v,
     createdAt,
@@ -27,18 +31,20 @@ export class Group extends Base {
     super({ _id, __v, createdAt, updatedAt });
     this.name = name;
     this.members = members;
-    this.creatorId = creatorId;
+    this.createdBy = createdBy;
     this.teams = teams;
+    this.flags = flags;
   }
 
   toJSON() {
     const json = super.toJSON();
     return {
       ...json,
-      creatorId: this.creatorId,
+      createdBy: this.createdBy,
       members: this.members,
       name: this.name,
       teams: this.teams,
+      flags: this.flags,
     };
   }
 }

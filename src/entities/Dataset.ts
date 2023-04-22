@@ -3,32 +3,35 @@ import { Group, IGroup } from "./Group";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IDataset extends IGroup {
-  flags?: {
-    isPrivate?: boolean;
-  };
   projectId: Types.ObjectId;
 }
 
 export class Dataset extends Group {
-  flags?: {
-    isPrivate?: boolean;
-  };
   projectId: Types.ObjectId;
 
   constructor({
-    flags = { isPrivate: false },
+    flags,
     projectId,
     _id,
     __v,
     createdAt,
     updatedAt,
-    creatorId,
+    createdBy,
     name,
     members,
     teams,
   }: IDataset) {
-    super({ _id, __v, createdAt, updatedAt, creatorId, name, members, teams });
-    this.flags = flags;
+    super({
+      _id,
+      __v,
+      createdAt,
+      updatedAt,
+      createdBy,
+      name,
+      members,
+      teams,
+      flags,
+    });
     this.projectId = projectId;
   }
 
@@ -36,7 +39,6 @@ export class Dataset extends Group {
     const json = super.toJSON();
     return {
       ...json,
-      flags: this.flags,
       projectId: this.projectId,
     };
   }
