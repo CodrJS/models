@@ -1,29 +1,26 @@
 import { Base, IBase } from "../Base";
 
-export interface IBaseConfig<T extends object> extends IBase {
-  type: string;
+export interface IBaseConfig extends IBase {
   verison?: string;
-  config: T;
+  flags?: { isDeleted: boolean };
 }
 
-export default class BaseConfig<T extends object> extends Base {
-  type: string;
+export default abstract class BaseConfig extends Base {
+  abstract type: string;
   verison: string;
-  config: T;
+  flags: { isDeleted: boolean };
 
-  constructor({ type, config, verison = "v1", ...base }: IBaseConfig<T>) {
+  constructor({ verison = "v1", flags, ...base }: IBaseConfig) {
     super(base);
-    this.type = type;
-    this.config = config;
     this.verison = verison;
+    this.flags = flags || { isDeleted: false };
   }
 
   toJSON() {
     const json = super.toJSON();
     return {
-      type: this.type,
       version: this.verison,
-      config: this.config,
+      flags: this.flags,
       ...json,
     };
   }

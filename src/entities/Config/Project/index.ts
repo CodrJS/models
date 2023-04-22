@@ -2,19 +2,37 @@ import BaseConfig, { IBaseConfig } from "../BaseConfig";
 import { DisplayConfig } from "./types/Display";
 import { SampleConfig } from "./types/Sample";
 
-export interface IProjectConfig {
+export interface IProjectConfig extends IBaseConfig {
   // $schema: string;
   display: DisplayConfig;
   sample: SampleConfig;
 }
 
-// exclude type from inheritence so we can hard type this class
-export type IProjectConfiguration = Omit<IBaseConfig<IProjectConfig>, "type">;
+export default class ProjectConfig extends BaseConfig {
+  type = "project";
+  display: DisplayConfig;
+  sample: SampleConfig;
 
-export default class ProjectConfig extends BaseConfig<IProjectConfig> {
-  constructor(options: IProjectConfiguration) {
-    // expand and add type before sending to super
-    const opts = { ...options, type: "project" };
-    super(opts);
+  constructor({
+    verison,
+    _id,
+    flags,
+    createdAt,
+    updatedAt,
+    display,
+    sample,
+  }: IProjectConfig) {
+    super({ verison, flags, _id, createdAt, updatedAt });
+    this.display = display;
+    this.sample = sample;
+  }
+
+  toJSON() {
+    return {
+      ...super.toJSON(),
+      type: this.type,
+      display: this.display,
+      smaple: this.sample,
+    };
   }
 }
