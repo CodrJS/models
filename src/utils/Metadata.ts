@@ -8,7 +8,7 @@ export class Metadata {
     hostname: string;
   };
   node: {
-    env: "production" | "developement" | "testing";
+    env: "production" | "development" | "testing";
     version: string;
     modules: Record<string, string>;
     yarnVersion: string;
