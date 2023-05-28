@@ -1,9 +1,13 @@
+export * from "./Annotation";
 export * from "./Audit";
+export * from "./Base";
 export * as Config from "./Config";
 export * from "./Dataset";
 export * from "./Group";
 export * from "./Message";
 export * from "./Profile";
+export * from "./Project";
+export * from "./Sample";
 export * from "./Session";
 export * from "./Template";
 export * from "./User";
