@@ -6,7 +6,7 @@ import {
   PureAbility,
 } from "@casl/ability";
 import type { AccessibleFieldsModel } from "@casl/mongoose";
-import type { IUser } from "../";
+import type { JwtPayload } from "./";
 import type { UserRoleType } from "./UserRole";
 
 // setup action and subject types for ability
@@ -34,7 +34,7 @@ export type Ability<
 export type DefinePermissions<
   Document extends AccessibleFieldsModel<any>,
   Subject extends string,
-> = (user: IUser, builder: AbilityBuilder<Ability<Document, Subject>>) => void;
+> = (user: JwtPayload, builder: AbilityBuilder<Ability<Document, Subject>>) => void;
 export type Permissions<
   Document extends AccessibleFieldsModel<any>,
   Subject extends string,
@@ -45,7 +45,7 @@ export const DefineAbility = function DefineAbility<
   Document extends AccessibleFieldsModel<any>,
   Subject extends string,
 >(
-  user: IUser,
+  user: JwtPayload,
   permissions: Record<UserRoleType, DefinePermissions<Document, Subject>>,
 ) {
   const builder = new AbilityBuilder(
