@@ -1,11 +1,12 @@
 export type TaskType =
-  | "classification"
-  | "tagging"
-  | "code-tagging"
-  | "translation";
+  | "CLASSIFICATION"
+  | "TAGGING"
+  | "CODETAGGING"
+  | "TRANSLATION";
+
 export enum AnnotationTask {
-  Classification = "classification",
-  Tagging = "tagging",
-  CodeTaging = "code-tagging",
-  Traslation = "translation",
+  Classification = "CLASSIFICATION",
+  Tagging = "TAGGING",
+  CodeTaging = "CODETAGGING",
+  Translation = "TRANSLATION",
 }

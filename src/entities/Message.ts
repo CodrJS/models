@@ -1,10 +1,10 @@
 import type { Types } from "mongoose";
-import type { MESSAGE } from "../types";
+import type { MessageType } from "../types";
 import { Base, IBase } from "./Base";
 
 export interface IMessage extends IBase {
   createdBy: Types.ObjectId;
-  type: MESSAGE;
+  type: MessageType;
   subject: string;
   body: string;
   to: Types.ObjectId[];
@@ -12,7 +12,7 @@ export interface IMessage extends IBase {
 
 export class Message extends Base {
   createdBy: Types.ObjectId;
-  type: MESSAGE;
+  type: MessageType;
   subject: string;
   body: string;
   to: Types.ObjectId[];

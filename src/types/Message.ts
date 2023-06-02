@@ -1,1 +1,1 @@
-export type MESSAGE = "email" | "sms" | "push"
+export type MessageType = "email" | "sms" | "push"

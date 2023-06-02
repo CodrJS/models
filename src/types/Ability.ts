@@ -10,7 +10,7 @@ import type { JwtPayload } from "./";
 import type { UserRoleType } from "./UserRole";
 
 // setup action and subject types for ability
-export type ACTION =
+export type ActionType =
   | "create"
   | "delete"
   | "read"
@@ -19,16 +19,16 @@ export type ACTION =
   | "edit"        // all CRUD ops except delete
   | "manipulate"; // all CRUD ops except read
 
-export type ABILITIES<SUBJECT> = [
-  ACTION,
-  SUBJECT | ForcedSubject<Exclude<SUBJECT, "all">>,
+export type AbilityType<Subject> = [
+  ActionType,
+  Subject | ForcedSubject<Exclude<Subject, "all">>,
 ];
 
 // define what an ability is using the action and subject types
 export type Ability<
   Document extends AccessibleFieldsModel<any>,
   Subject extends string,
-> = PureAbility<ABILITIES<Document | Subject>, MongoQuery<Document>>;
+> = PureAbility<AbilityType<Document | Subject>, MongoQuery<Document>>;
 
 // define permissions; used to create an ability
 export type DefinePermissions<

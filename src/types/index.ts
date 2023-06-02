@@ -1,4 +1,5 @@
 export * from "./Ability";
+export * from "./Entity";
 export * from "./Flags";
 export * from "./JWT";
 export * from "./Message";
