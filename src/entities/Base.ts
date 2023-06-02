@@ -1,12 +1,12 @@
-import type { Types } from "mongoose";
+import { Types } from "mongoose";
 
 export interface IBase {
   __v?: number;
-  _id?: Types.ObjectId;
-  createdAt?: string;
-  updatedAt?: string;
+  _id: Types.ObjectId;
+  createdAt: string;
+  updatedAt: string;
   createdBy: Types.ObjectId;
-  updatedBy?: Types.ObjectId;
+  updatedBy: Types.ObjectId;
 }
 
 export class Base {
@@ -17,9 +17,16 @@ export class Base {
   readonly createdBy: Types.ObjectId;
   readonly updatedBy: Types.ObjectId;
 
-  constructor({ createdAt, updatedAt, createdBy, updatedBy, _id, __v }: IBase) {
+  constructor({
+    createdAt,
+    updatedAt,
+    createdBy,
+    updatedBy,
+    _id,
+    __v,
+  }: Partial<IBase> & { createdBy: Types.ObjectId }) {
     this.__v = __v;
-    this._id = _id;
+    this._id = _id || new Types.ObjectId();
 
     const now = Date.now();
     this.createdAt = new Date(createdAt || now);
