@@ -10,8 +10,17 @@ export default abstract class BaseConfig extends Base {
   verison: string;
   flags: { isDeleted: boolean };
 
-  constructor({ verison = "v1", flags, ...base }: IBaseConfig) {
-    super(base);
+  constructor({
+    verison = "v1",
+    flags,
+    _id,
+    __v,
+    createdAt,
+    updatedAt,
+    createdBy,
+    updatedBy,
+  }: IBaseConfig) {
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.verison = verison;
     this.flags = flags || { isDeleted: false };
   }

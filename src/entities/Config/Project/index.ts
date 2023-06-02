@@ -14,15 +14,27 @@ export default class ProjectConfig extends BaseConfig {
   sample: SampleConfig;
 
   constructor({
-    verison,
     _id,
-    flags,
+    __v,
     createdAt,
     updatedAt,
+    createdBy,
+    updatedBy,
+    verison,
+    flags,
     display,
     sample,
   }: IProjectConfig) {
-    super({ verison, flags, _id, createdAt, updatedAt });
+    super({
+      verison,
+      flags,
+      _id,
+      __v,
+      createdAt,
+      updatedAt,
+      createdBy,
+      updatedBy,
+    });
     this.display = display;
     this.sample = sample;
   }
