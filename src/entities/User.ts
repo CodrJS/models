@@ -31,8 +31,10 @@ export class User extends Base {
     __v,
     createdAt,
     updatedAt,
+    createdBy,
+    updatedBy,
   }: IUser) {
-    super({ _id, __v, createdAt, updatedAt });
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.type = type;
     this.email = email;
     this.flags = flags;

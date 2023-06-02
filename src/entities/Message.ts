@@ -18,7 +18,6 @@ export class Message extends Base {
   to: Types.ObjectId[];
 
   constructor({
-    createdBy,
     type,
     subject,
     body,
@@ -27,9 +26,10 @@ export class Message extends Base {
     __v,
     createdAt,
     updatedAt,
+    createdBy,
+    updatedBy,
   }: IMessage) {
-    super({ _id, __v, createdAt, updatedAt });
-    this.createdBy = createdBy;
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.body = body;
     this.subject = subject;
     this.to = to;
@@ -40,7 +40,6 @@ export class Message extends Base {
     const json = super.toJSON();
     return {
       ...json,
-      createdBy: this.createdBy,
       body: this.body,
       subject: this.subject,
       to: this.to,

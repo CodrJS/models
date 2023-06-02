@@ -26,8 +26,10 @@ export class Annotation extends Base {
     __v,
     createdAt,
     updatedAt,
+    createdBy,
+    updatedBy,
   }: IAnnotation) {
-    super({ _id, __v, createdAt, updatedAt });
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.projectId = projectId;
     this.datasetId = datasetId;
     this.value = value;

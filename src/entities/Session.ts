@@ -38,19 +38,20 @@ export class Session extends Base {
     os = "UNKNOWN",
     browser = "UNKNOWN",
     ipAddress = "UNKNOWN",
-    userId,
     lastSeenAt,
     _id,
     __v,
     createdAt,
     updatedAt,
-  }: Partial<ISession> & { userId: Types.ObjectId }) {
-    super({ _id, __v, createdAt, updatedAt });
+    createdBy,
+    updatedBy,
+  }: Partial<ISession> & { createdBy: Types.ObjectId }) {
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.status = status;
     this.os = os;
     this.browser = browser;
     this.ipAddress = ipAddress;
-    this.userId = userId;
+    this.userId = createdBy;
     this.lastSeenAt = new Date(lastSeenAt || Date.now());
   }
 

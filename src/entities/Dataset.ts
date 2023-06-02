@@ -16,10 +16,11 @@ export class Dataset extends Group {
     __v,
     createdAt,
     updatedAt,
-    createdBy,
     name,
     members,
     teams,
+    createdBy,
+    updatedBy,
   }: IDataset) {
     super({
       _id,
@@ -27,6 +28,7 @@ export class Dataset extends Group {
       createdAt,
       updatedAt,
       createdBy,
+      updatedBy,
       name,
       members,
       teams,

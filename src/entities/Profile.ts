@@ -34,8 +34,10 @@ export class Profile extends Base {
     __v,
     createdAt,
     updatedAt,
+    createdBy,
+    updatedBy,
   }: IProfile) {
-    super({ _id, __v, createdAt, updatedAt });
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.name = name;
     this.avatarUrl = avatarUrl;
     this.userId = userId;

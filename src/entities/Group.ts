@@ -18,7 +18,6 @@ export class Group extends Base {
   flags: Flags & object;
 
   constructor({
-    createdBy,
     name,
     members,
     teams,
@@ -27,11 +26,12 @@ export class Group extends Base {
     __v,
     createdAt,
     updatedAt,
+    createdBy,
+    updatedBy,
   }: IGroup) {
-    super({ _id, __v, createdAt, updatedAt });
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.name = name;
     this.members = members;
-    this.createdBy = createdBy;
     this.teams = teams;
     this.flags = flags;
   }
@@ -40,7 +40,6 @@ export class Group extends Base {
     const json = super.toJSON();
     return {
       ...json,
-      createdBy: this.createdBy,
       members: this.members,
       name: this.name,
       teams: this.teams,

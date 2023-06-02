@@ -12,7 +12,8 @@ export interface IProject extends IBase {
   flags: Flags & {
     isAnonymized: boolean;
   };
-  createdBy: Types.ObjectId;
+  createdBy;
+  updatedBy;
 }
 
 export class Project extends Base {
@@ -25,7 +26,6 @@ export class Project extends Base {
   flags: Flags & {
     isAnonymized: boolean;
   };
-  createdBy: Types.ObjectId;
 
   constructor({
     bgColorClass,
@@ -40,8 +40,9 @@ export class Project extends Base {
     createdAt,
     updatedAt,
     createdBy,
+    updatedBy,
   }: IProject) {
-    super({ _id, __v, createdAt, updatedAt });
+    super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
 
     this.bgColorClass = bgColorClass;
     this.config = config;

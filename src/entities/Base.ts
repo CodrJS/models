@@ -5,21 +5,28 @@ export interface IBase {
   _id?: Types.ObjectId;
   createdAt?: string;
   updatedAt?: string;
+  createdBy: Types.ObjectId;
+  updatedBy?: Types.ObjectId;
 }
 
 export class Base {
   readonly __v: IBase["__v"];
   readonly _id: IBase["_id"];
-  createdAt: Date;
-  updatedAt: Date;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+  readonly createdBy: Types.ObjectId;
+  readonly updatedBy: Types.ObjectId;
 
-  constructor({ createdAt, updatedAt, _id, __v }: IBase) {
+  constructor({ createdAt, updatedAt, createdBy, updatedBy, _id, __v }: IBase) {
     this.__v = __v;
     this._id = _id;
 
     const now = Date.now();
     this.createdAt = new Date(createdAt || now);
     this.updatedAt = new Date(updatedAt || now);
+
+    this.createdBy = createdBy;
+    this.updatedBy = updatedBy || createdBy;
   }
 
   toJSON() {
@@ -28,6 +35,8 @@ export class Base {
       _id: this._id,
       createdAt: this.createdAt.toISOString(),
       updatedAt: this.updatedAt.toISOString(),
+      createdBy: this.createdBy,
+      updatedBy: this.updatedBy,
     };
   }
 }
