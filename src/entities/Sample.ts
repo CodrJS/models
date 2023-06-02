@@ -4,13 +4,13 @@ import { Base, IBase } from "./Base";
 export interface ISample extends IBase {
   projectId: Types.ObjectId;
   datasetId: Types.ObjectId;
-  payload: object;
+  payload: any;
 }
 
 export class Sample extends Base {
   projectId: Types.ObjectId;
   datasetId: Types.ObjectId;
-  payload: object;
+  payload: any;
 
   constructor({ projectId, datasetId, payload, _id, __v, createdAt, updatedAt, createdBy, updatedBy }: ISample) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
