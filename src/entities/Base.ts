@@ -2,15 +2,16 @@ import { Types } from "mongoose";
 import { AtLeast } from "../types";
 
 export interface IBase {
+  readonly kind: string;
   __v?: number;
   _id: Types.ObjectId;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
   createdBy: Types.ObjectId;
   updatedBy: Types.ObjectId;
 }
 
-export type IBaseMinimal = AtLeast<IBase, 'createdBy'>
+export type IBaseMinimal = AtLeast<IBase, "createdBy">;
 
 export class Base {
   readonly __v: IBase["__v"];
@@ -31,9 +32,9 @@ export class Base {
     this.__v = __v;
     this._id = _id || new Types.ObjectId();
 
-    const now = Date.now();
-    this.createdAt = new Date(createdAt || now);
-    this.updatedAt = new Date(updatedAt || now);
+    const now = new Date(Date.now());
+    this.createdAt = createdAt || now;
+    this.updatedAt = updatedAt || now;
 
     this.createdBy = createdBy;
     this.updatedBy = updatedBy || createdBy;
@@ -43,8 +44,8 @@ export class Base {
     return {
       __v: this.__v,
       _id: this._id,
-      createdAt: this.createdAt.toISOString(),
-      updatedAt: this.updatedAt.toISOString(),
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
       createdBy: this.createdBy,
       updatedBy: this.updatedBy,
     };

@@ -1,6 +1,6 @@
 {
   "name": "@codrjs/models",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",

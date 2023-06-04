@@ -1,6 +1,7 @@
 import { Base, IBaseMinimal } from "../Base";
 
 export interface IBaseConfig extends IBaseMinimal {
+  readonly kind: "Config";
   verison?: string;
   flags?: { isDeleted: boolean };
 }

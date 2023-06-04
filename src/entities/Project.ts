@@ -3,6 +3,7 @@ import { Flags, TaskType } from "../types";
 import { Base, IBaseMinimal } from "./Base";
 
 export interface IProject extends IBaseMinimal {
+  readonly kind: "Project";
   name: string;
   type: TaskType;
   slug: string;

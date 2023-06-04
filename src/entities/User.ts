@@ -1,10 +1,11 @@
 import { Base, IBaseMinimal } from "./Base";
-import { UserRoleType } from "../types";
+import { UserEnum, UserRoleEnum } from "../types";
 
 export interface IUser extends IBaseMinimal {
-  type: "anonymous" | "member" | "external";
+  readonly kind: "User";
+  type: UserEnum;
   email: string;
-  role: UserRoleType;
+  role: UserRoleEnum;
   flags: {
     isAnonymous: boolean;
     isDeleted: boolean;
@@ -13,9 +14,9 @@ export interface IUser extends IBaseMinimal {
 }
 
 export class User extends Base {
-  type: "anonymous" | "member" | "external";
+  type: UserEnum;
   email: string;
-  role: UserRoleType;
+  role: UserRoleEnum;
   flags: {
     isAnonymous: boolean;
     isDeleted: boolean;

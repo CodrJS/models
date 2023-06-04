@@ -3,6 +3,7 @@ import { Group, IGroup } from "./Group";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IDataset extends IGroup {
+  readonly kind: "Dataset";
   projectId: Types.ObjectId;
 }
 

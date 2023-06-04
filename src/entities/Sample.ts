@@ -2,6 +2,7 @@ import type { Types } from "mongoose";
 import { Base, IBaseMinimal } from "./Base";
 
 export interface ISample extends IBaseMinimal {
+  readonly kind: "Sample";
   projectId: Types.ObjectId;
   datasetId: Types.ObjectId;
   payload: any;

@@ -2,6 +2,7 @@ import type { Types } from "mongoose";
 import { Base, IBaseMinimal } from "./Base";
 
 export interface IAnnotation extends IBaseMinimal {
+  readonly kind: "Annotation";
   projectId: Types.ObjectId;
   datasetId: Types.ObjectId;
   sampleId: Types.ObjectId;

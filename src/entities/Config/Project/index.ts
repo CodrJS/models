@@ -2,7 +2,7 @@ import BaseConfig, { IBaseConfig } from "../BaseConfig";
 import { DisplayConfig } from "./types/Display";
 import { SampleConfig } from "./types/Sample";
 
-export interface IProjectConfig extends IBaseConfig {
+export interface IProjectConfig extends Omit<IBaseConfig, "kind"> {
   // $schema: string;
   display: DisplayConfig;
   sample: SampleConfig;
@@ -26,6 +26,7 @@ export default class ProjectConfig extends BaseConfig {
     sample,
   }: IProjectConfig) {
     super({
+      kind: 'Config',
       verison,
       flags,
       _id,

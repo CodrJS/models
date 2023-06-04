@@ -17,6 +17,7 @@ import { Base, IBaseMinimal } from "./Base";
  */
 
 export interface ISession extends IBaseMinimal {
+  readonly kind: "Session";
   status: "INITIATING" | "ESTABLISHED" | "CLOSED";
   os: string;
   browser: string;
@@ -30,7 +31,6 @@ export class Session extends Base {
   os: string;
   browser: string;
   ipAddress: string;
-  userId: Types.ObjectId;
   lastSeenAt: Date;
 
   constructor({
@@ -51,7 +51,6 @@ export class Session extends Base {
     this.os = os;
     this.browser = browser;
     this.ipAddress = ipAddress;
-    this.userId = createdBy;
     this.lastSeenAt = new Date(lastSeenAt || Date.now());
   }
 
@@ -62,7 +61,6 @@ export class Session extends Base {
       os: this.os,
       browser: this.browser,
       ipAddress: this.ipAddress,
-      userId: this.userId,
       lastSeenAt: this.lastSeenAt.toISOString(),
       ...json,
     };

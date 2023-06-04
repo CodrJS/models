@@ -1,7 +1,9 @@
 import type { Types } from "mongoose";
 import { Base, IBaseMinimal } from "./Base";
+import { User } from "./User";
 
 export interface IProfile extends IBaseMinimal {
+  readonly kind: "Profile";
   name: {
     first: string;
     last: string;
@@ -23,6 +25,7 @@ export class Profile extends Base {
   avatarUrl?: string;
   username: string;
   userId: Types.ObjectId;
+  user?: User;
 
   constructor({
     name,
@@ -32,17 +35,19 @@ export class Profile extends Base {
     phone,
     _id,
     __v,
+    user,
     createdAt,
     updatedAt,
     createdBy,
     updatedBy,
-  }: IProfile) {
+  }: IProfile & { user?: User }) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.name = name;
     this.avatarUrl = avatarUrl;
     this.userId = userId;
     this.phone = phone;
     this.username = username;
+    this.user = user;
   }
 
   toJSON() {

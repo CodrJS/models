@@ -3,6 +3,7 @@ import type { MessageType } from "../types";
 import { Base, IBaseMinimal } from "./Base";
 
 export interface IMessage extends IBaseMinimal {
+  readonly kind: "Message";
   type: MessageType;
   subject: string;
   body: string;
