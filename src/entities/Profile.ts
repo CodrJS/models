@@ -1,7 +1,7 @@
 import type { Types } from "mongoose";
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 
-export interface IProfile extends IBase {
+export interface IProfile extends IBaseMinimal {
   name: {
     first: string;
     last: string;

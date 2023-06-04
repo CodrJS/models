@@ -1,7 +1,7 @@
 import type { Types } from "mongoose";
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 
-export interface ISample extends IBase {
+export interface ISample extends IBaseMinimal {
   projectId: Types.ObjectId;
   datasetId: Types.ObjectId;
   payload: any;

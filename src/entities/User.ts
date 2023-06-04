@@ -1,7 +1,7 @@
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 import { UserRoleType } from "../types";
 
-export interface IUser extends IBase {
+export interface IUser extends IBaseMinimal {
   type: "anonymous" | "member" | "external";
   email: string;
   role: UserRoleType;

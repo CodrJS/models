@@ -1,8 +1,8 @@
 import type { Types } from "mongoose";
 import { Flags, TaskType } from "../types";
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 
-export interface IProject extends IBase {
+export interface IProject extends IBaseMinimal {
   name: string;
   type: TaskType;
   slug: string;
@@ -12,8 +12,6 @@ export interface IProject extends IBase {
   flags: Flags & {
     isAnonymized: boolean;
   };
-  createdBy;
-  updatedBy;
 }
 
 export class Project extends Base {
@@ -51,7 +49,6 @@ export class Project extends Base {
     this.slug = slug;
     this.name = name;
     this.type = type;
-    this.createdBy = createdBy;
   }
 
   toJSON() {

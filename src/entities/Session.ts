@@ -1,5 +1,5 @@
 import type { Types } from "mongoose";
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 
 /**
  * SESSION WORKFLOW:
@@ -16,7 +16,7 @@ import { Base, IBase } from "./Base";
  * - not storing session for anonymous users?
  */
 
-export interface ISession extends IBase {
+export interface ISession extends IBaseMinimal {
   status: "INITIATING" | "ESTABLISHED" | "CLOSED";
   os: string;
   browser: string;

@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { Config } from "..";
 import options from "../constants/project.json";
 import { DisplayConfig } from "../entities/Config/Project/types/Display";
@@ -8,6 +9,7 @@ describe("Project Configuration", () => {
       display: <DisplayConfig>options.display,
       sample: options.sample,
       verison: "v2",
+      createdBy: new Types.ObjectId(0),
     });
 
     expect(config.display.inputs[1]).toEqual({

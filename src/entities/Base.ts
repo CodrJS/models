@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { AtLeast } from "../types";
 
 export interface IBase {
   __v?: number;
@@ -8,6 +9,8 @@ export interface IBase {
   createdBy: Types.ObjectId;
   updatedBy: Types.ObjectId;
 }
+
+export type IBaseMinimal = AtLeast<IBase, 'createdBy'>
 
 export class Base {
   readonly __v: IBase["__v"];

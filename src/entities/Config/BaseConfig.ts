@@ -1,6 +1,6 @@
-import { Base, IBase } from "../Base";
+import { Base, IBaseMinimal } from "../Base";
 
-export interface IBaseConfig extends IBase {
+export interface IBaseConfig extends IBaseMinimal {
   verison?: string;
   flags?: { isDeleted: boolean };
 }

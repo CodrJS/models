@@ -1,8 +1,8 @@
 import type { Types } from "mongoose";
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 import { Flags } from "../types/Flags";
 
-export interface IGroup<F = object> extends IBase {
+export interface IGroup<F = object> extends IBaseMinimal {
   createdBy: Types.ObjectId;
   members: Types.ObjectId[];
   name: string;
@@ -11,7 +11,6 @@ export interface IGroup<F = object> extends IBase {
 }
 
 export class Group extends Base {
-  createdBy: Types.ObjectId;
   members: Types.ObjectId[];
   name: string;
   teams: Types.ObjectId[];

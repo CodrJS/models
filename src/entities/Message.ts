@@ -1,9 +1,8 @@
 import type { Types } from "mongoose";
 import type { MessageType } from "../types";
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 
-export interface IMessage extends IBase {
-  createdBy: Types.ObjectId;
+export interface IMessage extends IBaseMinimal {
   type: MessageType;
   subject: string;
   body: string;
@@ -11,7 +10,6 @@ export interface IMessage extends IBase {
 }
 
 export class Message extends Base {
-  createdBy: Types.ObjectId;
   type: MessageType;
   subject: string;
   body: string;

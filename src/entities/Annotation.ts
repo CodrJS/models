@@ -1,7 +1,7 @@
 import type { Types } from "mongoose";
-import { Base, IBase } from "./Base";
+import { Base, IBaseMinimal } from "./Base";
 
-export interface IAnnotation extends IBase {
+export interface IAnnotation extends IBaseMinimal {
   projectId: Types.ObjectId;
   datasetId: Types.ObjectId;
   sampleId: Types.ObjectId;
