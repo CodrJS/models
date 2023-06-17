@@ -1,9 +1,8 @@
 import type { Types } from "mongoose";
-import { Flags, TaskType } from "../types";
-import { Base, IBaseMinimal } from "./Base";
+import { AtLeast, Flags, TaskType } from "../types";
+import { Base, IBase } from "./Base";
 
-export interface IProject extends IBaseMinimal {
-  readonly kind: "Project";
+export interface IProject extends IBase<"Project"> {
   name: string;
   type: TaskType;
   slug: string;
@@ -40,7 +39,10 @@ export class Project extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: IProject) {
+  }: AtLeast<
+    IProject,
+    "createdBy" | "bgColorClass" | "config" | "flags" | "slug" | "name" | "type"
+  >) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
 
     this.bgColorClass = bgColorClass;

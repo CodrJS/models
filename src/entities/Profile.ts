@@ -1,9 +1,9 @@
 import type { Types } from "mongoose";
-import { Base, IBaseMinimal } from "./Base";
+import { Base, IBase } from "./Base";
 import { User } from "./User";
+import { AtLeast } from "@/types";
 
-export interface IProfile extends IBaseMinimal {
-  readonly kind: "Profile";
+export interface IProfile extends IBase<"Profile"> {
   name: {
     first: string;
     last: string;
@@ -40,7 +40,10 @@ export class Profile extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: IProfile & { user?: User }) {
+  }: AtLeast<
+    IProfile & { user: User },
+    "createdBy" | "name" | "userId" | "username"
+  >) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.name = name;
     this.avatarUrl = avatarUrl;

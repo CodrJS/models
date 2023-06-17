@@ -1,8 +1,8 @@
 import { Types } from "mongoose";
-import { AtLeast } from "../types";
+import { AtLeast, IModelKind } from "../types";
 
-export interface IBase {
-  readonly kind: string;
+export interface IBase<K extends string = string> extends IModelKind<K> {
+  readonly kind: K;
   __v?: number;
   _id: Types.ObjectId;
   createdAt: Date;
@@ -10,8 +10,6 @@ export interface IBase {
   createdBy: Types.ObjectId;
   updatedBy: Types.ObjectId;
 }
-
-export type IBaseMinimal = AtLeast<IBase, "createdBy">;
 
 export class Base {
   readonly __v: IBase["__v"];
@@ -28,7 +26,7 @@ export class Base {
     updatedBy,
     _id,
     __v,
-  }: Partial<IBase> & { createdBy: Types.ObjectId }) {
+  }: AtLeast<IBase, "createdBy">) {
     this.__v = __v;
     this._id = _id || new Types.ObjectId();
 

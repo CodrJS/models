@@ -1,8 +1,7 @@
-import { Base, IBaseMinimal } from "./Base";
-import { UserEnum, UserRoleEnum } from "../types";
+import { Base, IBase } from "./Base";
+import { AtLeast, UserEnum, UserRoleEnum } from "../types";
 
-export interface IUser extends IBaseMinimal {
-  readonly kind: "User";
+export interface IUser extends IBase<"User"> {
   type: UserEnum;
   email: string;
   role: UserRoleEnum;
@@ -34,7 +33,7 @@ export class User extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: IUser) {
+  }: AtLeast<IUser, "createdBy" | "type" | "role" | "email" | "flags">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.type = type;
     this.email = email;

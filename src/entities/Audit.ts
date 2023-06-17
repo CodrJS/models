@@ -1,9 +1,8 @@
 import type { Types } from "mongoose";
-import type { IBaseMinimal } from "./Base";
+import type { IBase } from "./Base";
 import type { ActionType, EntityType } from "../types";
 
-export interface IAudit extends Omit<IBaseMinimal, "createdBy"> {
-  readonly kind: "Audit";
+export interface IAudit extends Omit<IBase<"Audit">, "createdBy"> {
   entityType: EntityType; // (where) what entity got modified
   action: ActionType; // action taken
   userId: Types.ObjectId; // who

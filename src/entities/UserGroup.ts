@@ -6,9 +6,7 @@ interface IAdditionalFlags {
   // others can join?
   isJoinable: boolean;
 }
-export interface IUserGroup extends IGroup<IAdditionalFlags> {
-  readonly kind: "UserGroup";
-}
+export type IUserGroup = IGroup<"UserGroup", IAdditionalFlags>
 
 export class UserGroup extends Group {
   constructor({

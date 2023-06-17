@@ -1,8 +1,9 @@
+import { AtLeast } from "@/types";
 import BaseConfig, { IBaseConfig } from "../BaseConfig";
 import { DisplayConfig } from "./types/Display";
 import { SampleConfig } from "./types/Sample";
 
-export interface IProjectConfig extends Omit<IBaseConfig, "kind"> {
+export interface IProjectConfig extends IBaseConfig {
   // $schema: string;
   display: DisplayConfig;
   sample: SampleConfig;
@@ -24,9 +25,8 @@ export default class ProjectConfig extends BaseConfig {
     flags,
     display,
     sample,
-  }: IProjectConfig) {
+  }: AtLeast<IProjectConfig, "createdBy" | "display" | "sample">) {
     super({
-      kind: 'Config',
       verison,
       flags,
       _id,

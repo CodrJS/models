@@ -1,8 +1,10 @@
 import type { Types } from "mongoose";
-import { Base, IBaseMinimal } from "./Base";
+import { Base, IBase } from "./Base";
 import { Flags } from "../types/Flags";
+import { AtLeast } from "@/types";
 
-export interface IGroup<F = object> extends IBaseMinimal {
+export interface IGroup<Kind extends string = "Group", F = object>
+  extends IBase<Kind> {
   createdBy: Types.ObjectId;
   members: Types.ObjectId[];
   name: string;
@@ -27,7 +29,7 @@ export class Group extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: IGroup) {
+  }: AtLeast<IGroup, "createdBy" | "name" | "members" | "teams" | "flags">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.name = name;
     this.members = members;

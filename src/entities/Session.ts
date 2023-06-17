@@ -1,5 +1,6 @@
 import type { Types } from "mongoose";
-import { Base, IBaseMinimal } from "./Base";
+import { Base, IBase } from "./Base";
+import { AtLeast } from "@/types";
 
 /**
  * SESSION WORKFLOW:
@@ -16,8 +17,7 @@ import { Base, IBaseMinimal } from "./Base";
  * - not storing session for anonymous users?
  */
 
-export interface ISession extends IBaseMinimal {
-  readonly kind: "Session";
+export interface ISession extends IBase<"Session"> {
   status: "INITIATING" | "ESTABLISHED" | "CLOSED";
   os: string;
   browser: string;
@@ -45,7 +45,7 @@ export class Session extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: Partial<ISession> & { createdBy: Types.ObjectId }) {
+  }: AtLeast<ISession, "createdBy">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.status = status;
     this.os = os;

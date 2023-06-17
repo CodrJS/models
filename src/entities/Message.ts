@@ -1,9 +1,8 @@
 import type { Types } from "mongoose";
-import type { MessageType } from "../types";
-import { Base, IBaseMinimal } from "./Base";
+import type { AtLeast, MessageType } from "../types";
+import { Base, IBase } from "./Base";
 
-export interface IMessage extends IBaseMinimal {
-  readonly kind: "Message";
+export interface IMessage extends IBase<"Message"> {
   type: MessageType;
   subject: string;
   body: string;
@@ -27,7 +26,7 @@ export class Message extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: IMessage) {
+  }: AtLeast<IMessage, "createdBy" | "body" | "subject" | "to" | "type">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.body = body;
     this.subject = subject;

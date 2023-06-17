@@ -1,7 +1,8 @@
-import { Base, IBaseMinimal } from "../Base";
+import { AtLeast } from "@/types";
+import { Base, IBase } from "../Base";
 
-export interface IBaseConfig extends IBaseMinimal {
-  readonly kind: "Config";
+export interface IBaseConfig<Kind extends string = "Config">
+  extends IBase<Kind> {
   verison?: string;
   flags?: { isDeleted: boolean };
 }
@@ -20,7 +21,7 @@ export default abstract class BaseConfig extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: IBaseConfig) {
+  }: AtLeast<IBaseConfig, "createdBy">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.verison = verison;
     this.flags = flags || { isDeleted: false };

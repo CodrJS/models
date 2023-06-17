@@ -1,8 +1,8 @@
 import type { Types } from "mongoose";
-import { Base, IBaseMinimal } from "./Base";
+import { Base, IBase } from "./Base";
+import { AtLeast } from "@/types";
 
-export interface IAnnotation extends IBaseMinimal {
-  readonly kind: "Annotation";
+export interface IAnnotation extends IBase<"Annotation"> {
   projectId: Types.ObjectId;
   datasetId: Types.ObjectId;
   sampleId: Types.ObjectId;
@@ -29,7 +29,10 @@ export class Annotation extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: IAnnotation) {
+  }: AtLeast<
+    IAnnotation,
+    "createdBy" | "projectId" | "datasetId" | "annotatedBy" | "sampleId"
+  >) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.projectId = projectId;
     this.datasetId = datasetId;
