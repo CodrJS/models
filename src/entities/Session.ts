@@ -31,6 +31,7 @@ export class Session extends Base {
   os: string;
   browser: string;
   ipAddress: string;
+  userId: Types.ObjectId;
   lastSeenAt: Date;
 
   constructor({
@@ -38,6 +39,7 @@ export class Session extends Base {
     os = "UNKNOWN",
     browser = "UNKNOWN",
     ipAddress = "UNKNOWN",
+    userId,
     lastSeenAt,
     _id,
     __v,
@@ -45,12 +47,13 @@ export class Session extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: AtLeast<ISession, "createdBy">) {
+  }: AtLeast<ISession, "createdBy" | "userId">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.status = status;
     this.os = os;
     this.browser = browser;
     this.ipAddress = ipAddress;
+    this.userId = userId;
     this.lastSeenAt = new Date(lastSeenAt || Date.now());
   }
 
@@ -61,6 +64,7 @@ export class Session extends Base {
       os: this.os,
       browser: this.browser,
       ipAddress: this.ipAddress,
+      userId: this.userId,
       lastSeenAt: this.lastSeenAt.toISOString(),
       ...json,
     };
