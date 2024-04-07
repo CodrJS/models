@@ -1,21 +1,22 @@
-import { Flags } from "@/types";
 import { Group, IGroup } from "./Group";
 
-interface IAdditionalFlags extends Flags {
-  // anonymize the data?
-  isAnonymous: boolean;
-  // others can join?
-  isJoinable: boolean;
+interface Flags {
+  isActive: boolean;
+  isDeleted: boolean;
 }
-export type IUserGroup = IGroup<"UserGroup", IAdditionalFlags>
+export interface IOrganization extends IGroup<"Organization", Flags> {
+  slug: string;
+  domain: string; // to restrict signin to a specified domain
+}
 
-export class UserGroup extends Group {
+export class Organization extends Group {
+  readonly slug: string;
+  readonly domain: string;
+
   constructor({
     flags = {
-      isAnonymous: false,
+      isActive: true,
       isDeleted: false,
-      isJoinable: false,
-      isPrivate: false,
     },
     _id,
     __v,
@@ -25,7 +26,9 @@ export class UserGroup extends Group {
     updatedBy,
     name,
     members,
-  }: IUserGroup) {
+    slug,
+    domain,
+  }: IOrganization) {
     super({
       _id,
       __v,
@@ -37,12 +40,15 @@ export class UserGroup extends Group {
       members,
       flags,
     });
+    this.slug = slug;
+    this.domain = domain;
   }
 
   toJSON() {
     const json = super.toJSON();
     return {
       ...json,
+      slug: this.slug,
     };
   }
 }

@@ -1,27 +1,34 @@
 import type { Types } from "mongoose";
 import { Base, IBase } from "./Base";
-import { Flags } from "../types/Flags";
 import { AtLeast } from "@/types";
 
-export interface IGroup<Kind extends string = "Group", F = object>
-  extends IBase<Kind> {
-  createdBy: Types.ObjectId;
-  members: Types.ObjectId[];
+export interface IGroup<
+  Kind extends string = "Group",
+  F extends object = object,
+> extends IBase<Kind> {
+  members: IGroupMember[];
   name: string;
-  teams: Types.ObjectId[];
-  flags: Flags & F;
+  flags: F;
+}
+
+export interface IGroupMember {
+  type: GroupMemberEnum;
+  _id: Types.ObjectId;
+}
+
+export enum GroupMemberEnum {
+  "USER" = "USER",
+  "TEAM" = "TEAM",
 }
 
 export class Group extends Base {
-  members: Types.ObjectId[];
+  members: IGroupMember[];
   name: string;
-  teams: Types.ObjectId[];
-  flags: Flags & object;
+  flags: object;
 
   constructor({
     name,
     members,
-    teams,
     flags,
     _id,
     __v,
@@ -29,11 +36,10 @@ export class Group extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: AtLeast<IGroup, "createdBy" | "name" | "members" | "teams" | "flags">) {
+  }: AtLeast<IGroup, "createdBy" | "name" | "members" | "flags">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.name = name;
     this.members = members;
-    this.teams = teams;
     this.flags = flags;
   }
 
@@ -43,7 +49,6 @@ export class Group extends Base {
       ...json,
       members: this.members,
       name: this.name,
-      teams: this.teams,
       flags: this.flags,
     };
   }

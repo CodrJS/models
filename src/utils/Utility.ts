@@ -1,22 +1,25 @@
 // import { AccessibleModel } from "@casl/mongoose";
 // import { Document } from "mongoose";
 // import { Ability, ACTION } from "../types";
-import { IUser } from "../";
-import { Response } from "./Response";
+import type { JwtPayload } from "@/types";
+import type { IAuthorizationResponse } from "../";
+import type { Response } from "./Response";
 
-export abstract class Utility {
+export abstract class Utility<Class = object> {
   // for system only purposes
   protected abstract _getDocument<DocType>(id: string): Promise<DocType>;
 
   // CRUD Operations
-  abstract get(token: IUser, id: string): Promise<Response<any>>;
-  abstract create(token: IUser, obj: object): Promise<Response<any>>;
+  abstract get(token: JwtPayload, id: string): Promise<Response<Class>>;
+  abstract create(token: JwtPayload, obj: object): Promise<Response<Class>>;
   abstract update(
-    token: IUser,
+    token: JwtPayload,
     id: string,
     obj: object,
-  ): Promise<Response<any>>;
-  abstract delete(token: IUser, id: string): Promise<Response<any>>;
+  ): Promise<Response<Class>>;
+  abstract delete(token: JwtPayload, id: string): Promise<Response<Class>>;
+
+  abstract getAuthorization(token: JwtPayload): IAuthorizationResponse;
 
   // protected withAbility<ModelType extends Document, Subject extends string>(
   //   model: AccessibleModel<ModelType>,

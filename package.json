@@ -1,6 +1,6 @@
 {
   "name": "@codrjs/models",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
@@ -57,6 +57,6 @@
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "@codrjs/config": "^1.0.6"
+    "@codrjs/config": "^1.0.7"
   }
 }

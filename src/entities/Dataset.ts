@@ -1,9 +1,9 @@
 import type { Types } from "mongoose";
 import { Group, IGroup } from "./Group";
-import { AtLeast } from "@/types";
+import { AtLeast, Flags } from "@/types";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IDataset extends IGroup<"Dataset"> {
+export interface IDataset extends IGroup<"Dataset", Flags> {
   projectId: Types.ObjectId;
 }
 
@@ -19,12 +19,11 @@ export class Dataset extends Group {
     updatedAt,
     name,
     members,
-    teams,
     createdBy,
     updatedBy,
   }: AtLeast<
     IDataset,
-    "createdBy" | "name" | "members" | "teams" | "flags" | "projectId"
+    "createdBy" | "name" | "members" | "flags" | "projectId"
   >) {
     super({
       _id,
@@ -35,7 +34,6 @@ export class Dataset extends Group {
       updatedBy,
       name,
       members,
-      teams,
       flags,
     });
     this.projectId = projectId;

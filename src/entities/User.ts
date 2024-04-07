@@ -1,10 +1,11 @@
 import { Base, IBase } from "./Base";
-import { AtLeast, UserEnum, UserRoleEnum } from "../types";
+import { AtLeast, UserEnum } from "../types";
+import { Types } from "mongoose";
 
 export interface IUser extends IBase<"User"> {
+  organizationId: Types.ObjectId;
   type: UserEnum;
   email: string;
-  role: UserRoleEnum;
   flags: {
     isAnonymous: boolean;
     isDeleted: boolean;
@@ -15,7 +16,6 @@ export interface IUser extends IBase<"User"> {
 export class User extends Base {
   type: UserEnum;
   email: string;
-  role: UserRoleEnum;
   flags: {
     isAnonymous: boolean;
     isDeleted: boolean;
@@ -25,7 +25,6 @@ export class User extends Base {
   constructor({
     type,
     email,
-    role,
     flags = { isDisabled: false, isAnonymous: false, isDeleted: false },
     _id,
     __v,
@@ -33,12 +32,11 @@ export class User extends Base {
     updatedAt,
     createdBy,
     updatedBy,
-  }: AtLeast<IUser, "createdBy" | "type" | "role" | "email" | "flags">) {
+  }: AtLeast<IUser, "createdBy" | "type" | "email" | "flags">) {
     super({ _id, __v, createdAt, updatedAt, createdBy, updatedBy });
     this.type = type;
     this.email = email;
     this.flags = flags;
-    this.role = role;
   }
 
   toJSON() {
@@ -46,7 +44,6 @@ export class User extends Base {
     return {
       type: this.type,
       email: this.email,
-      role: this.role,
       flags: this.flags,
       ...json,
     };

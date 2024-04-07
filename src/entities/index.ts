@@ -1,12 +1,15 @@
 export * from "./Annotation";
 export * from "./Audit";
+export * from "./Authorization";
 export * from "./Base";
 export * as Config from "./Config";
 export * from "./Dataset";
 export * from "./Group";
 export * from "./Message";
+export * from "./Organization";
 export * from "./Profile";
 export * from "./Project";
+export * from "./Role";
 export * from "./Sample";
 export * from "./Session";
 export * from "./Template";

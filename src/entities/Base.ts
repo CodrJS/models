@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
-import { AtLeast, IModelKind } from "../types";
+import { AtLeast } from "../types";
 
-export interface IBase<K extends string = string> extends IModelKind<K> {
+export interface IBase<K extends string = string> {
   readonly kind: K;
   __v?: number;
   _id: Types.ObjectId;
